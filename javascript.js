@@ -6,29 +6,34 @@ const h1Score = document.getElementById("humScore");
 const b2Score = document.getElementById("botScore")
 const winnerDisplay = document.querySelector(".roundWinner");
 const championDisplay = document.getElementById("champion");
-// const playerPicks = document.querySelector("playerChoices");
+const playerPicks = document.querySelector(".playerChoices");
 const ruleS = document.querySelector(".ruling");
 const gameRule = ruleS.textContent;
 
 function playRound(humanChoice, computerChoice) {
     if (humanChoice == computerChoice){
-    winnerDisplay.textContent = "TIE! Let's try again!"
+        playerPicks.textContent = `${humanChoice.toUpperCase()} negates ${computerChoice.toUpperCase()}`;
+        winnerDisplay.textContent = "TIE! Let's try again!"
     } else if (humanChoice.toLowerCase() == "rock" && computerChoice == "scissors"){
-    winnerDisplay.textContent = "Monkey WON. Lucky!"
-    humanScore += 1;
-    h1Score.textContent = humanScore;
+        playerPicks.textContent = `${humanChoice.toUpperCase()} beats SCISSORS`;
+        winnerDisplay.textContent = "Monkey WON. Lucky!"
+        humanScore += 1;
+        h1Score.textContent = humanScore;
     } else if (humanChoice.toLowerCase() == "scissors" && computerChoice == "paper"){
-    winnerDisplay.textContent = "Monkey WON. Lucky!"
-    humanScore += 1;
-    h1Score.textContent = humanScore;
+        playerPicks.textContent = `${humanChoice.toUpperCase()} beats PAPER`;
+        winnerDisplay.textContent = "Monkey WON. Lucky!"
+        humanScore += 1;
+        h1Score.textContent = humanScore;
     } else if (humanChoice.toLowerCase() == "paper" && computerChoice == "rock"){
-    winnerDisplay.textContent = "Monkey WON. Lucky!"
-    humanScore += 1;
-    h1Score.textContent = humanScore;
+        playerPicks.textContent = `${humanChoice.toUpperCase()} beats ROCK`;
+        winnerDisplay.textContent = "Monkey WON. Lucky!"
+        humanScore += 1;
+        h1Score.textContent = humanScore;
     } else {
-    winnerDisplay.textContent = "BOT WON. Seriously?"
-    botScore += 1;
-    b2Score.textContent = botScore;
+        playerPicks.textContent = `${humanChoice.toUpperCase()} loses to ${computerChoice.toUpperCase()}`
+        winnerDisplay.textContent = "BOT WON. Seriously?"
+        botScore += 1;
+        b2Score.textContent = botScore;
     }
 }
 
