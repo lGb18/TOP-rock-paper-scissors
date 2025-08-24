@@ -1,65 +1,79 @@
 // GAME
-function playGame(pick){
-    let humanScore = 0;
-    let botScore = 0;
-    
-    function playRound(humanChoice, computerChoice) {
-        if (humanChoice == computerChoice){
-        console.log('TIE!!!')
-        } else if (humanChoice.toLowerCase() == "rock" && computerChoice == "scissors"){
-        console.log('Human Wins!')
-        humanScore += 1;
-        } else if (humanChoice.toLowerCase() == "scissors" && computerChoice == "paper"){
-        console.log('Human Wins!')
-        humanScore += 1;
-        } else if (humanChoice.toLowerCase() == "paper" && computerChoice == "rock"){
-        console.log('Human Wins!')
-        humanScore += 1;
-        } else {
-        console.log('BOT Wins!')
-        botScore += 1;
-        }
-        console.log(`Human: ${humanScore} BOT: ${botScore}`) 
+let humanScore = 0;
+let botScore = 0;
+const h1Score = document.getElementById("humScore");
+const b2Score = document.getElementById("botScore")
+const winnerDisplay = document.querySelector(".roundWinner");
+const championDisplay = document.getElementById("champion");
+const playerPicks = document.querySelector("playerChoices");
+
+function playRound(humanChoice, computerChoice) {
+    if (humanChoice == computerChoice){
+    winnerDisplay.textContent = "TIE! Let's try again!"
+    } else if (humanChoice.toLowerCase() == "rock" && computerChoice == "scissors"){
+    winnerDisplay.textContent = "Monkey WON. Lucky!"
+    humanScore += 1;
+    h1Score.textContent = humanScore;
+    } else if (humanChoice.toLowerCase() == "scissors" && computerChoice == "paper"){
+    winnerDisplay.textContent = "Monkey WON. Lucky!"
+    humanScore += 1;
+    h1Score.textContent = humanScore;
+    } else if (humanChoice.toLowerCase() == "paper" && computerChoice == "rock"){
+    winnerDisplay.textContent = "Monkey WON. Lucky!"
+    humanScore += 1;
+    h1Score.textContent = humanScore;
+    } else {
+    winnerDisplay.textContent = "BOT WON. Seriously?"
+    botScore += 1;
+    b2Score.textContent = botScore;
     }
-
-    choices = ["rock", "paper", "scissors"]
-    // function getHumanChoice(){
-    //     return prompt('Enter your choice: ');
-    //     }
-    function getComputerChoice() {
-            randomChoice = Math.floor(Math.random() * choices.length)
-            return choices[randomChoice]
-        }
-    
-    // while (humanScore < 5 || botScore < 5){
-    
-    
-    let computerSelection = getComputerChoice();
-    
-    playRound(pick, computerSelection);
-
-    //     playRound(humanSelection, computerSelection);
-    //     if (humanScore == 5) {
-    //         console.log('Champion: HUMAN')
-    //         return;
-    //     }
-    //     if (botScore == 5) {
-    //         console.log('Champion: BOT')
-    //         return;
-    //     }
-    // }
 }
-let human_Pick = '';
+
+choices = ["rock", "paper", "scissors"]
+function getComputerChoice() {
+        randomChoice = Math.floor(Math.random() * choices.length)
+        return choices[randomChoice]
+    }   
+
+function winner(){
+    if (humanScore == 5) {
+        championDisplay.textContent = "CHAMPION: HUMAN";
+        humanScore = 0;
+        botScore = 0;
+        h1Score.textContent = humanScore;
+        b2Score.textContent = botScore;
+        return;
+    }
+    if (botScore == 5) {
+        championDisplay.textContent = "CHAMPION: BOT";
+        humanScore = 0;
+        botScore = 0;
+        h1Score.textContent = humanScore;
+        b2Score.textContent = botScore;
+        return;
+    }
+}
+
 // Page
 const choice_Button = document.getElementById("parent-button");
 
+let human_Pick = '';
 choice_Button.addEventListener('click', (e) => {
     if(e.target.classList.contains('rock-btn')){
         human_Pick = "rock";
+        computerSelection = getComputerChoice();
     }else if(e.target.classList.contains('paper-btn')) {
-        human_Pick = "paper"
-    }else {
+        human_Pick = "paper";
+        computerSelection = getComputerChoice();
+    }else if(e.target.classList.contains('scissors-btn')){
         human_Pick = "scissors";
+        computerSelection = getComputerChoice();
+    }else {
+        pass
     }
-    playGame(human_Pick);
+    console.log(human_Pick);
+    playRound(human_Pick, computerSelection);
+    winner();
 })
+
+

@@ -4,20 +4,77 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TOP RPS</title>
+    <style>
+        body {
+            background-color:powderblue;
+        }
+        h1 {
+            margin: 24px;
+            padding: 12px;
+        }
+        .scoreCard {
+            background-color: #ECEEDF;
+            display: flex;
+            flex-direction: row;
+            justify-content:space-around;
+        }
+        .rule {
+            color: #D3AF37;
+        }
+        .roundWinner {
+            margin: 32px;
+            padding: 24px;
+            text-align:center;
+            font-size: 24px;
+        }
+        ul {
+            list-style-type:none;
+        }
+        button {
+            display: inline-block;
+            text-align: center;
+            cursor: pointer;
+            padding: 17px 30px;
+            font-size: 17.5px;
+            border: 2px solid transparent;
+            border-color: #000;
+            color: #000;
+            background: transparent;
+            font-weight: 800;
+            line-height: 30px;
+            margin: 32px; 
+            :hover {
+                background-color: #000;
+                color: #fff;
+            }   
+        }
+        #parent-button {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+        }
+
+    </style>
 </head>
 <body>
     <h1 style="text-align: center">ROCK-PAPER-SCISSORS</h1>
-    <h3>Rules:</h3>
-        <ul>
-            <li>Best of 5</li>
-            <li>Input your choice.</li>
-        </ul>
+    
 
+    <div class="scoreCard" style="text-align:center">
+        <h2>HUMAN: <span id="humScore">0</span></h2>
+        <h2 class="rule" id="champion">BEST OF 5</h2>
+        <h2>BOT:<span id="botScore">0</span></h2>
+    </div>
+    
+    <div class="roundWinner"></div> 
+    <div class="playerChoices"></div>
+    <div class="buttons">
         <ul id="parent-button">
-            <li><button id="rock-btn">ROCK</button></li>
-            <li><button id="paper-btn">PAPER</button></li>
-            <li><button id="scissors-btn">SCISSORS</button></li>
+            <li><button class="rock-btn">ROCK</button></li>
+            <li><button class="paper-btn">PAPER</button></li>
+            <li><button class="scissors-btn">SCISSORS</button></li>
         </ul>
+    </div>
     <script src="javascript.js"></script>
 </body>
 </html>
