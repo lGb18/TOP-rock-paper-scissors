@@ -1,11 +1,14 @@
 // GAME
 let humanScore = 0;
 let botScore = 0;
+
 const h1Score = document.getElementById("humScore");
 const b2Score = document.getElementById("botScore")
 const winnerDisplay = document.querySelector(".roundWinner");
 const championDisplay = document.getElementById("champion");
-const playerPicks = document.querySelector("playerChoices");
+// const playerPicks = document.querySelector("playerChoices");
+const ruleS = document.querySelector(".ruling");
+const gameRule = ruleS.textContent;
 
 function playRound(humanChoice, computerChoice) {
     if (humanChoice == computerChoice){
@@ -50,8 +53,10 @@ function winner(){
         botScore = 0;
         h1Score.textContent = humanScore;
         b2Score.textContent = botScore;
+        
         return;
     }
+    championDisplay.textContent = gameRule;
 }
 
 // Page
@@ -74,6 +79,7 @@ choice_Button.addEventListener('click', (e) => {
     console.log(human_Pick);
     playRound(human_Pick, computerSelection);
     winner();
+    
 })
 
 
