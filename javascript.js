@@ -79,7 +79,7 @@ choice_Button.addEventListener('click', (e) => {
         human_Pick = "scissors";
         computerSelection = getComputerChoice();
     }else {
-        pass
+        
     }
     console.log(human_Pick);
     playRound(human_Pick, computerSelection);
