@@ -37,8 +37,8 @@ function playRound(humanChoice, computerChoice) {
     }
 }
 
-choices = ["rock", "paper", "scissors"]
 function getComputerChoice() {
+        choices = ["rock", "paper", "scissors"]
         randomChoice = Math.floor(Math.random() * choices.length)
         return choices[randomChoice]
     }   
@@ -84,7 +84,6 @@ choice_Button.addEventListener('click', (e) => {
     console.log(human_Pick);
     playRound(human_Pick, computerSelection);
     winner();
-    
 })
 
 
